@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+   --height-nav: 3rem;
+   --screen-height: 100vh;
+   --screen-height-dynamic: 100vh;
+
+   @media (min-width: 32em) {
+      --height-nav: 4rem;
+   }
+
+   @media (min-width: 48em) {
+      --height-nav: 6rem;
+   }
+
+   @supports (height: 100svh) {
+      --screen-height: 100svh;
+   }
+
+   @supports (height: 100dvh) {
+      --screen-height-dynamic: 100dvh;
+   }
+}
+
+@layer base {
+   .menu {
+      @apply flex gap-4;
+   }
+
+   .menu .menu-item,  
+   .menu .menu-item .sub-menu .menu-item{
+      @apply relative px-2;
+   }
+
+   .menu .menu-item .sub-menu{
+      @apply absolute bg-white hidden group-hover:block border bottom-0 left-0 translate-y-full shadow rounded;
+   }
+   .menu .menu-item:hover .sub-menu {
+      display: block;
+   }
+
+   .menu .menu-item .sub-menu .menu-item{
+      @apply  py-1;
+   }
+}
